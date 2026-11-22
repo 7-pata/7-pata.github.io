@@ -1,0 +1,86 @@
+[
+  {
+    "id": "fiction",
+    "title": "শেষ মেসেজটি কে পাঠিয়েছিল?",
+    "category": "গল্প, সাহিত্য ও কল্পজগৎ",
+    "summary": "একটি রহস্যময় মেসেজ ঘিরে মৌলিক ডিজিটাল থ্রিলার।",
+    "pdf": "books/01-fiction-premium.pdf",
+    "pages": 15,
+    "color": "#7452b2",
+    "symbol": "✦",
+    "author": "অর্নব",
+    "published": true
+  },
+  {
+    "id": "arts",
+    "title": "সুর, রং আর নাচের অদৃশ্য ভাষা",
+    "category": "শিল্প, সংগীত ও সংস্কৃতি",
+    "summary": "সংগীত, নৃত্য, চিত্রকলার সঙ্গে মানুষের অনুভূতির সম্পর্ক।",
+    "pdf": "books/02-arts-premium.pdf",
+    "pages": 15,
+    "color": "#cf6374",
+    "symbol": "♫",
+    "author": "অর্নব",
+    "published": true
+  },
+  {
+    "id": "history",
+    "title": "ইতিহাসের ছবিতে যা দেখা যায় না",
+    "category": "রহস্য, ইতিহাস ও অজানা",
+    "summary": "ইতিহাস, কিংবদন্তি আর প্রমাণ আলাদা করে দেখার চর্চা।",
+    "pdf": "books/03-history-premium.pdf",
+    "pages": 15,
+    "color": "#b98550",
+    "symbol": "⌛",
+    "author": "অর্নব",
+    "published": true
+  },
+  {
+    "id": "psychology",
+    "title": "আপনার মন কি আপনাকেই ভুল বোঝায়?",
+    "category": "মন ও মানুষের আচরণ",
+    "summary": "মানসিক পক্ষপাত, স্মৃতি ও ভুল সিদ্ধান্তের আশ্চর্য দিক।",
+    "pdf": "books/04-psychology-premium.pdf",
+    "pages": 15,
+    "color": "#3b98a0",
+    "symbol": "◈",
+    "author": "অর্নব",
+    "published": true
+  },
+  {
+    "id": "career",
+    "title": "টাকা ও ক্যারিয়ারের আটটি ভুল হিসাব",
+    "category": "অর্থনীতি, ক্যারিয়ার ও জীবনদক্ষতা",
+    "summary": "দৈনন্দিন সিদ্ধান্ত, অর্থব্যবস্থা ও কর্মজীবনের ব্যবহারিক পাঠ।",
+    "pdf": "books/05-money-career-premium.pdf",
+    "pages": 15,
+    "color": "#438567",
+    "symbol": "৳",
+    "author": "অর্নব",
+    "published": true
+  },
+  {
+    "id": "ai",
+    "title": "AI-এর যুগে সত্য-মিথ্যা",
+    "category": "AI, প্রযুক্তি ও প্রোগ্রামিং",
+    "summary": "ডিপফেক, ভুয়া খবর এবং ডিজিটাল তথ্য যাচাইয়ের পথনির্দেশ।",
+    "pdf": "books/06-ai-truth-premium.pdf",
+    "pages": 15,
+    "color": "#d41465",
+    "symbol": "◎",
+    "author": "অর্নব",
+    "published": true
+  },
+  {
+    "id": "science",
+    "title": "বিজ্ঞানের আটটি অদ্ভুত প্রশ্ন",
+    "category": "বিজ্ঞান ও আবিষ্কার",
+    "summary": "মহাকাশ, আলো ও দৈনন্দিন বিজ্ঞান নিয়ে কৌতূহলের যাত্রা।",
+    "pdf": "books/07-science-premium.pdf",
+    "pages": 15,
+    "color": "#408ac3",
+    "symbol": "✧",
+    "author": "অর্নব",
+    "published": true
+  }
+]
