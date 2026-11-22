@@ -127,7 +127,7 @@
     }
   }
 
-  renderCount(document.querySelector('#stat-books'), books.length);
+  renderCount(document.querySelector('#stat-books'), books.filter(book => book.catalogued !== false).length);
   stats.then(snapshot => {
     if (!snapshot) return;
     let hasTotals = false;

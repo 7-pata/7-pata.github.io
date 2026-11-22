@@ -2,8 +2,9 @@
   'use strict';
   await window.PataLibrary.ready;
 
-  const { config, categories, books, normalize, node: element, detail, pdfAvailable, bookActions, coverArt, catalogUnavailable } = window.PataLibrary;
+  const { config, categories, books: allBooks, normalize, node: element, detail, pdfAvailable, bookActions, coverArt, catalogUnavailable } = window.PataLibrary;
   const analytics = window.PataAnalytics;
+  const books = allBooks.filter(book => book.catalogued !== false);
   const select = selector => document.querySelector(selector);
   const grid = select('#bookGrid');
   const search = select('#search');

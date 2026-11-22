@@ -11,7 +11,9 @@
     "author": "অর্নব",
     "published": true,
     "categoryId": "literature",
-    "featured": true
+    "featured": true,
+    "cover": "assets/covers/fiction-final.webp",
+    "edition": "final-professional"
   },
   {
     "id": "arts",
@@ -25,7 +27,9 @@
     "author": "অর্নব",
     "published": true,
     "categoryId": "arts",
-    "featured": true
+    "featured": true,
+    "cover": "assets/covers/arts-final.webp",
+    "edition": "final-professional"
   },
   {
     "id": "history",
@@ -39,7 +43,9 @@
     "author": "অর্নব",
     "published": true,
     "categoryId": "history",
-    "featured": true
+    "featured": true,
+    "cover": "assets/covers/history-final.webp",
+    "edition": "final-professional"
   },
   {
     "id": "psychology",
@@ -53,7 +59,9 @@
     "author": "অর্নব",
     "published": true,
     "categoryId": "mind",
-    "featured": true
+    "featured": true,
+    "cover": "assets/covers/psychology-final.webp",
+    "edition": "final-professional"
   },
   {
     "id": "career",
@@ -67,7 +75,9 @@
     "author": "অর্নব",
     "published": true,
     "categoryId": "life",
-    "featured": true
+    "featured": true,
+    "cover": "assets/covers/career-final.webp",
+    "edition": "final-professional"
   },
   {
     "id": "ai",
@@ -81,7 +91,9 @@
     "author": "অর্নব",
     "published": true,
     "categoryId": "technology",
-    "featured": true
+    "featured": true,
+    "cover": "assets/covers/ai-final.webp",
+    "edition": "final-professional"
   },
   {
     "id": "science",
@@ -95,6 +107,8 @@
     "author": "অর্নব",
     "published": true,
     "categoryId": "science",
-    "featured": true
+    "featured": true,
+    "cover": "assets/covers/science-final.webp",
+    "edition": "final-professional"
   }
 ]

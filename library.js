@@ -31,9 +31,15 @@
     for (const book of entries) {
       if (book.status === 'draft' || !book.id || books.some(item => item.id === book.id)) continue;
       const category = categories.get(book.categoryId)?.title || book.category;
+      let pdf = book.status === 'upcoming' || book.published === false ? '' : pdfPath(book.pdf);
+      if (pdf && book.edition) {
+        const url = new URL(pdf);
+        url.searchParams.set('edition', book.edition);
+        pdf = url.href;
+      }
       books.push({
         ...book, category,
-        pdf: book.status === 'upcoming' || book.published === false ? '' : pdfPath(book.pdf),
+        pdf,
         searchable: normalize([book.title, book.author, category, book.category,
           book.subcategory, book.summary, ...(book.tags || [])].join(' ')),
       });
