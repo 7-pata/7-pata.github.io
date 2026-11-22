@@ -1,6 +1,6 @@
 /* 7UP-এর সব পরিবর্তন এখান থেকে করুন। কোনো গোপন PIN/OTP প্রকাশ করবেন না। */
 window.SEVENUP = {
-  author: 'অর্ণব',
+  author: 'অর্নব',
   facebook: '', // https://www.facebook.com/your-page
   payments: { bkash: '', nagad: '', rocket: '' },
   books: [
