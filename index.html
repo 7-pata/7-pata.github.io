@@ -21,9 +21,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=bangladesh-topics">
-  <script defer src="config.js?v=bangladesh-topics"></script>
-  <script defer src="script.js?v=bangladesh-topics"></script>
+  <link rel="stylesheet" href="styles.css?v=v2">
+  <script defer src="config.js?v=v2"></script>
+  <script defer src="library.js?v=v2"></script>
+  <script defer src="analytics.js?v=v2"></script>
+  <script defer src="script.js?v=v2"></script>
 </head>
 <body id="home">
   <a class="skip" href="#main">মূল অংশে যান</a>
@@ -34,6 +36,7 @@
       <nav id="nav" aria-label="প্রধান মেনু"><div class="nav-links">
         <a href="#segments">বিষয়সমূহ</a>
         <a href="#books">বইয়ের সংগ্রহ</a>
+        <a href="#statistics">পরিসংখ্যান</a>
         <a href="#principles">যেভাবে পড়বেন</a>
         <a href="#about">পরিচিতি</a>
         <a class="nav-cta" href="#support">সহায়তা করুন</a>
@@ -72,10 +75,17 @@
     <section class="section" id="segments" aria-labelledby="segments-title">
       <div class="wrap">
         <div class="section-head">
-          <h2 id="segments-title">বাংলাদেশের পাঠকদের জন্য সাতটি বিষয়</h2>
-          <p>প্রযুক্তি থেকে সরকারি সেবা, আপনার কাজে লাগে এমন বিষয় বেছে নিন।</p>
+          <h2 id="segments-title">সাতটি জ্ঞানবিভাগ</h2>
+          <p>সাহিত্য থেকে বিজ্ঞান, যে বিষয়ে আগ্রহ সেই বিভাগের বই খুঁজুন।</p>
         </div>
         <ul class="segment-grid" id="categoryGrid"></ul>
+      </div>
+    </section>
+    <section class="section featured" id="featured" aria-labelledby="featured-title">
+      <div class="wrap">
+        <div class="section-head"><h2 id="featured-title">নির্বাচিত ই-বই</h2><p>সম্পাদকের নির্বাচনে থাকা প্রকাশিত ও আসন্ন বই।</p></div>
+        <div class="books-grid" id="featuredGrid"></div>
+        <p id="featuredEmpty" hidden>এখনো কোনো নির্বাচিত বই নেই।</p>
       </div>
     </section>
     <section class="section library" id="books" aria-labelledby="books-title">
@@ -87,6 +97,7 @@
         <div class="controls">
           <label class="search-label"><span>বই খুঁজুন</span><input id="search" placeholder="যেমন পাইথন বা ডেটা সায়েন্স" type="search"></label>
           <label><span>বিষয়</span><select id="categoryFilter"><option value="">সব বিষয়</option></select></label>
+          <label><span>উপবিষয়</span><select id="subcategoryFilter" disabled><option value="">সব উপবিষয়</option></select></label>
           <p id="count" role="status"></p>
         </div>
         <div class="books-grid" id="bookGrid"></div>
@@ -98,6 +109,27 @@
         <noscript><p>বইয়ের তালিকা, বিষয় বাছাই ও খোঁজার সুবিধা ব্যবহার করতে জাভাস্ক্রিপ্ট চালু করুন।</p></noscript>
       </div>
     </section>
+    <section class="section discovery" aria-labelledby="discover-title">
+      <div class="wrap">
+        <div class="section-head"><h2 id="discover-title">আরও বই খুঁজুন</h2></div>
+        <div class="discovery-grid">
+          <section class="discovery-card"><h3>সাম্প্রতিক প্রকাশনা</h3><ul id="recentBooks"></ul><p id="recentEmpty">তারিখসহ প্রকাশিত বই এলে এখানে দেখা যাবে।</p></section>
+          <section class="discovery-card"><h3>জনপ্রিয় বই</h3><ul id="popularBooks"></ul><p id="popularEmpty">পড়ার সেশনের তথ্য এলে এখানে দেখা যাবে।</p></section>
+        </div>
+      </div>
+    </section>
+    <section class="section statistics" id="statistics" aria-labelledby="statistics-title">
+      <div class="wrap">
+        <div class="section-head"><h2 id="statistics-title">৭ পাতার পরিসংখ্যান</h2><p>ডাউনলোডের উদ্যোগ ও অনলাইনে পড়ার সেশন আলাদাভাবে গণনা করা হয়।</p></div>
+        <dl class="stats-grid">
+          <div><dt>মোট ভিজিট <small>পাতা দেখা</small></dt><dd id="stat-page_views">পরিসংখ্যান শীঘ্রই আসছে</dd></div>
+          <div><dt>মোট বই <small>ক্যাটালগে</small></dt><dd id="stat-books">পরিসংখ্যান শীঘ্রই আসছে</dd></div>
+          <div><dt>মোট ডাউনলোড <small>ডাউনলোডের উদ্যোগ</small></dt><dd id="stat-download_starts">পরিসংখ্যান শীঘ্রই আসছে</dd></div>
+          <div><dt>মোট পড়ার সেশন <small>আনুমানিক</small></dt><dd id="stat-reading_sessions">পরিসংখ্যান শীঘ্রই আসছে</dd></div>
+        </dl>
+        <p id="statsUpdated" class="stats-note" hidden></p>
+      </div>
+    </section>
     <section class="section how" id="principles" aria-labelledby="how-title">
       <div class="wrap">
         <div class="section-head">
@@ -107,7 +139,7 @@
         <ol class="steps">
           <li><h3>বই খুঁজুন</h3><p>নাম লিখে খুঁজুন বা বিষয় বেছে নিন। প্রচ্ছদ ও সারাংশ দেখে বই পছন্দ করুন।</p></li>
           <li><h3>প্রকাশের অবস্থা দেখুন</h3><p>যে বইয়ের পাশে ‘শীঘ্রই আসছে’ লেখা, সেটির পিডিএফ এখনো পাওয়া যাচ্ছে না।</p></li>
-          <li><h3>পিডিএফ নামিয়ে পড়ুন</h3><p>প্রকাশিত বইয়ের ‘পিডিএফ ডাউনলোড করুন’ লিংক ব্যবহার করুন। নামানো বই পরে অফলাইনেও পড়তে পারবেন।</p></li>
+          <li><h3>পিডিএফ নামিয়ে পড়ুন</h3><p>প্রকাশিত বই অনলাইনে পড়ুন কিংবা ‘পিডিএফ ডাউনলোড করুন’ লিংক ব্যবহার করে অফলাইনের জন্য রাখুন।</p></li>
         </ol>
       </div>
     </section>
@@ -125,18 +157,18 @@
     <section class="section support" id="support" aria-labelledby="support-title">
       <div class="wrap">
         <div class="section-head">
-          <h2 id="support-title"><span aria-hidden="true">♡</span> 7 Pata-কে সহায়তা করুন</h2>
-          <p>নম্বর কপি করে আপনার অ্যাপ থেকে পাঠান</p>
+          <h2 id="support-title"><span aria-hidden="true">♡</span> ৭ পাতাকে সহায়তা করুন</h2>
+          <p>নম্বর কপি করে আপনার অ্যাপ থেকে পাঠান।</p>
         </div>
         <div class="payments">
           <article class="pay-card bkash">
             <h3>বিকাশ</h3>
-            <span class="pay-status" id="number-bkash" dir="ltr">01860066158</span>
+            <span class="pay-status" id="number-bkash">নম্বর শীঘ্রই যুক্ত হবে</span>
             <button class="button primary" data-method="bkash" type="button" hidden>নম্বর কপি করুন</button>
           </article>
           <article class="pay-card nagad">
             <h3>নগদ</h3>
-            <span class="pay-status" id="number-nagad" dir="ltr">01860066158</span>
+            <span class="pay-status" id="number-nagad">নম্বর শীঘ্রই যুক্ত হবে</span>
             <button class="button primary" data-method="nagad" type="button" hidden>নম্বর কপি করুন</button>
           </article>
           <article class="pay-card rocket">
@@ -145,7 +177,7 @@
             <button class="button primary" data-method="rocket" type="button" hidden>নম্বর কপি করুন</button>
           </article>
         </div>
-        <p class="support-note">আপনার সহায়তা সম্পূর্ণ ঐচ্ছিক। সব বই ও শিক্ষামূলক রিসোর্স বিনামূল্যে পাওয়া যাবে।</p>
+        <p class="support-note">আপনার সহায়তা সম্পূর্ণ ঐচ্ছিক। ৭ পাতার সব ই-বুক বিনামূল্যে।</p>
       </div>
     </section>
   </main>
@@ -162,6 +194,7 @@
       </div>
       <p class="footer-bottom">© <span id="year"></span> ৭ পাতা · অর্নবের স্বাধীন শিক্ষামূলক উদ্যোগ</p>
     </div>
+    <div class="wrap"><div id="analyticsPreferences" hidden></div></div>
   </footer>
   <div class="toast" id="toast" role="status" aria-atomic="true"></div>
 </body>

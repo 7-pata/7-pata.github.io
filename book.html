@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#FFF9FC">
+  <title>ই-বইয়ের বিবরণ — ৭ পাতা</title>
+  <meta name="description" content="৭ পাতার বাংলা ই-বইয়ের বিবরণ, অনলাইনে পড়া ও বিনামূল্যে পিডিএফ ডাউনলোড।">
+  <meta property="og:title" content="৭ পাতা — বাংলা ই-বই">
+  <meta property="og:description" content="সাতটি জ্ঞানদিগন্ত, সবার জন্য উন্মুক্ত।">
+  <meta property="og:image" content="https://7-pata.github.io/assets/preview.png">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="bn_BD">
+  <link rel="icon" href="assets/favicon.svg?v=7-pata-bn" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=v2">
+  <script defer src="config.js?v=v2"></script>
+  <script defer src="library.js?v=v2"></script>
+  <script defer src="analytics.js?v=v2"></script>
+  <script defer src="book.js?v=v2"></script>
+</head>
+<body>
+  <a class="skip" href="#main">মূল অংশে যান</a>
+  <header class="header">
+    <div class="wrap topbar">
+      <a class="logo" href="./" aria-label="৭ পাতা — প্রথম পাতা"><span aria-hidden="true">৭</span> পাতা</a>
+      <a class="text-link" href="./#books">বইয়ের সংগ্রহে ফিরুন</a>
+    </div>
+  </header>
+  <main id="main" class="wrap book-page" tabindex="-1">
+    <article class="book-detail" id="bookDetail" hidden>
+      <div class="detail-cover"><img id="detailCover" width="500" height="708" alt=""></div>
+      <div>
+        <p id="detailCategory" class="eyebrow"></p>
+        <h1 id="detailTitle"></h1>
+        <p id="detailMeta" class="detail-meta"></p>
+        <p id="detailSummary" class="intro"></p>
+        <ul id="detailMetrics" class="book-metrics" hidden></ul>
+        <div id="detailActions" class="book-actions"></div>
+        <div class="share-actions" aria-label="বই শেয়ার করুন">
+          <a id="shareFacebook" class="text-link" target="_blank" rel="noopener noreferrer">ফেসবুকে শেয়ার করুন</a>
+          <button id="copyLink" class="button secondary" type="button">বইয়ের লিংক কপি করুন</button>
+        </div>
+        <p id="shareMessage" role="status"></p>
+        <input id="shareUrl" aria-label="বইয়ের লিংক" readonly hidden>
+      </div>
+    </article>
+    <section id="bookNotFound" class="empty" hidden><h1>বইটি পাওয়া যায়নি</h1><a class="text-link" href="./#books">বইয়ের সংগ্রহ দেখুন</a></section>
+    <section id="reader" class="reader" aria-labelledby="readerTitle" hidden>
+      <div class="reader-heading">
+        <div><h2 id="readerTitle" tabindex="-1">অনলাইনে পড়ুন</h2><p id="readerStatus" role="status"></p></div>
+        <a class="text-link" id="closeReader">বইয়ের বিবরণে ফিরুন</a>
+      </div>
+      <div class="reader-tools" id="readerTools" hidden>
+        <button class="button secondary" id="prevPage" type="button">আগের পাতা</button>
+        <form id="pageForm"><label for="pageNumber">পাতা</label> <input id="pageNumber" inputmode="numeric" pattern="[0-9০-৯]+" size="3" required><span id="pageTotal"></span><button type="submit" class="button secondary">যান</button></form>
+        <button class="button secondary" id="nextPage" type="button">পরের পাতা</button>
+        <button class="button secondary" id="zoomOut" type="button" aria-label="পাতা ছোট করুন">−</button>
+        <button class="button secondary" id="zoomIn" type="button" aria-label="পাতা বড় করুন">+</button>
+        <button class="button secondary" id="fullscreen" type="button" hidden>পুরো পর্দা</button>
+      </div>
+      <div id="progressWrap" class="reader-progress" hidden><label for="readingProgress">বর্তমান অবস্থান</label> <progress id="readingProgress" max="100" value="0"></progress> <span id="progressLabel"></span></div>
+      <div id="readerViewport" class="reader-viewport" tabindex="0" role="region" aria-label="পিডিএফ পাতা" hidden>
+        <div id="pdfPage" class="pdf-page"><canvas id="pdfCanvas" aria-hidden="true"></canvas><div id="pdfText" class="pdf-text"></div></div>
+      </div>
+      <p class="reader-fallback" id="readerFallback" hidden><a class="text-link" id="openPdf" target="_blank" rel="noopener noreferrer">মূল পিডিএফ খুলুন</a></p>
+    </section>
+    <noscript><p>বইয়ের বিবরণ ও পাঠক খুলতে জাভাস্ক্রিপ্ট চালু করুন।</p></noscript>
+  </main>
+  <footer class="footer"><div class="wrap"><p>৭ পাতা · অর্নবের স্বাধীন শিক্ষামূলক উদ্যোগ</p><div id="analyticsPreferences" hidden></div></div></footer>
+</body>
+</html>

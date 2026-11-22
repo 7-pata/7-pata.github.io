@@ -1,52 +1,28 @@
 (() => {
   'use strict';
 
-  const config = window.SEVENUP || {};
-  const select = (selector) => document.querySelector(selector);
+  const { config, categories, books, normalize, node: element, detail, pdfAvailable, bookActions } = window.PataLibrary;
+  const analytics = window.PataAnalytics;
+  const select = selector => document.querySelector(selector);
   const grid = select('#bookGrid');
   const search = select('#search');
   const filter = select('#categoryFilter');
+  const subcategory = select('#subcategoryFilter');
   const categoryGrid = select('#categoryGrid');
-  const categories = config.categories || [];
-  const categoryNames = new Map(categories.map(({ id, title }) => [id, title]));
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
   const desktopPointer = matchMedia('(min-width: 64rem) and (hover: hover) and (pointer: fine)');
 
-  function pdfPath(value) {
-    if (typeof value !== 'string') return '';
-    const path = value.trim();
-    if (/^https:\/\//i.test(path)) {
-      try { return new URL(path).protocol === 'https:' ? path : ''; }
-      catch { return ''; }
-    }
-    if (!/^(?![\/\\.#])[\p{L}\p{M}\p{N}_./ %\-]+\.pdf(?:\?[^#]*)?$/iu.test(path)) return '';
-    try {
-      const decoded = decodeURIComponent(path.split('?')[0]);
-      if (/^[/.#]|(?:^|\/)\.\.(?:\/|$)|[\\?#\u0000-\u001f]/.test(decoded)) return '';
-      return path;
-    } catch {
-      return '';
-    }
-  }
+  const icons = {
+    book: 'M12 6c-3-2-6-2-9-1v13c3-1 6-1 9 1 3-2 6-2 9-1V5c-3-1-6-1-9 1v13',
+    music: 'M10 17V6l10-2v10M10 17a3 2 0 1 1-6 0 3 2 0 1 1 6 0m10-3a3 2 0 1 1-6 0 3 2 0 1 1 6 0',
+    compass: 'M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Zm4-14-2 6-6 2 2-6 6-2Z',
+    brain: 'M12 5a3 3 0 0 0-6 0 4 4 0 0 0-2 7 4 4 0 0 0 2 6 3 3 0 0 0 6 1V5a3 3 0 0 1 6 0 4 4 0 0 1 2 7 4 4 0 0 1-2 6 3 3 0 0 1-6 1M6 10c3 0 3 3 3 4m9-4c-3 0-3 3-3 4',
+    case: 'M3 10h18v10H3zM3 10V7h18v3M9 7V4h6v3m-3 3v4',
+    chip: 'M6 6h12v12H6zM9 9h6v6H9zM9 3v3m6-3v3M9 18v3m6-3v3M3 9h3m-3 6h3m12-6h3m-3 6h3',
+    atom: 'M22 12a10 4 0 1 0-20 0 10 4 0 1 0 20 0m-5 8.7A10 4 60 1 0 7 3.3a10 4 60 1 0 10 17.4m-10 0A10 4-60 1 0 17 3.3a10 4-60 1 0-10 17.4',
+  };
 
-  const normalize = (value) => value.normalize('NFC').toLocaleLowerCase('bn').trim();
-  const books = (config.books || []).map((book) => {
-    const categoryId = book.categoryId || categories.find(({ title }) => title === book.category)?.id;
-    const category = categoryNames.get(categoryId) || book.category;
-    return {
-      ...book, categoryId, category, pdf: pdfPath(book.pdf),
-      searchable: normalize([book.title, category, book.category, book.summary, ...(book.tags || [])].join(' ')),
-    };
-  });
-
-  function element(tag, className, text) {
-    const node = document.createElement(tag);
-    if (className) node.className = className;
-    if (text !== undefined) node.textContent = text;
-    return node;
-  }
-
-  for (const { id, title, icon, accent, summary } of categories) {
+  for (const { id, title, icon, accent, summary } of categories.values()) {
     filter.add(new Option(title, id));
     const item = element('li');
     const button = element('button', 'segment-card');
@@ -55,37 +31,54 @@
     button.dataset.accent = accent;
     button.setAttribute('aria-pressed', 'false');
     button.setAttribute('aria-controls', 'bookGrid');
-    const symbol = element('span', 'segment-icon', icon);
+    const symbol = element('span', 'segment-icon');
     symbol.setAttribute('aria-hidden', 'true');
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    const path = document.createElementNS(svg.namespaceURI, 'path');
+    path.setAttribute('d', icons[icon] || icons.book);
+    svg.append(path);
+    symbol.append(svg);
     button.append(symbol, element('strong', '', title), element('small', '', summary));
     item.append(button);
     categoryGrid.append(item);
   }
 
+  function bookLink(book) {
+    const link = element('a', '', book.title);
+    link.href = detail(book.id);
+    return link;
+  }
+
   function bookCard(book, index) {
     const card = element('article', 'book-card');
     card.style.setProperty('--book-delay', `${Math.min(index, 5) * 45}ms`);
-    const cover = element('div', 'book-cover');
+    const cover = element('a', 'book-cover');
+    cover.href = detail(book.id);
     const image = element('img');
-    image.src = book.cover;
+    image.src = book.cover || 'assets/default-cover.svg';
     image.alt = `${book.title} বইয়ের প্রচ্ছদ`;
     image.width = 500;
     image.height = 708;
     image.loading = 'lazy';
     image.decoding = 'async';
+    image.addEventListener('error', () => { image.src = 'assets/default-cover.svg'; }, { once: true });
     cover.append(image);
     const body = element('div', 'book-body');
-    const meta = [book.category, book.pdf && 'প্রকাশিত'].filter(Boolean).join(' · ');
-    body.append(element('span', 'book-meta', meta), element('h3', '', book.title), element('p', '', book.summary));
+    const title = element('h3');
+    title.append(bookLink(book));
+    const meta = [book.category, book.subcategory].filter(Boolean).join(' · ');
+    const metrics = element('ul', 'book-metrics');
+    metrics.hidden = true;
+    analytics.bookMetrics(metrics, book.id);
+    const actions = element('div', 'book-actions');
     if (book.pdf) {
-      const link = element('a', 'button primary', 'পিডিএফ ডাউনলোড করুন');
-      link.href = book.pdf;
-      link.setAttribute('aria-label', `${book.title} — পিডিএফ ডাউনলোড করুন`);
-      if (link.origin === location.origin) link.download = '';
-      body.append(link);
+      actions.append(element('span', 'book-status', 'পিডিএফ যাচাই হচ্ছে'));
+      pdfAvailable(book).then(available => bookActions(actions, book, available));
     } else {
-      body.append(element('span', 'book-status', 'শীঘ্রই আসছে'));
+      bookActions(actions, book, false);
     }
+    body.append(element('span', 'book-meta', meta), title, element('p', '', book.summary), metrics, actions);
     card.append(cover, body);
     return card;
   }
@@ -102,7 +95,8 @@
   function drawBooks() {
     const terms = normalize(search.value).split(/\s+/).filter(Boolean);
     const matches = books.filter((book) =>
-      (!filter.value || book.categoryId === filter.value) && terms.every((term) => book.searchable.includes(term)));
+      (!filter.value || book.categoryId === filter.value) &&
+      (!subcategory.value || book.subcategory === subcategory.value) && terms.every((term) => book.searchable.includes(term)));
     for (const card of grid.children) reveal?.unobserve(card);
     const cards = matches.map(bookCard);
     grid.replaceChildren(...cards);
@@ -115,12 +109,22 @@
   }
 
   search.addEventListener('input', drawBooks);
-  filter.addEventListener('change', drawBooks);
+  function updateSubcategories() {
+    const topics = categories.get(filter.value)?.subcategories || [];
+    subcategory.replaceChildren(new Option('সব উপবিষয়', ''), ...topics.map(topic => new Option(topic, topic)));
+    subcategory.disabled = topics.length === 0;
+  }
+  filter.addEventListener('change', () => {
+    updateSubcategories();
+    drawBooks();
+  });
+  subcategory.addEventListener('change', drawBooks);
   categoryGrid.addEventListener('click', (event) => {
     const button = event.target.closest('[data-category]');
     if (!button) return;
     search.value = '';
     filter.value = button.dataset.category;
+    updateSubcategories();
     drawBooks();
     filter.focus({ preventScroll: true });
     select('#books').scrollIntoView();
@@ -128,10 +132,43 @@
   select('#resetSearch').addEventListener('click', () => {
     search.value = '';
     filter.value = '';
+    updateSubcategories();
     drawBooks();
     search.focus();
   });
   drawBooks();
+
+  const featured = books.filter(book => book.featured);
+  select('#featuredGrid').append(...featured.map(bookCard));
+  select('#featuredEmpty').hidden = featured.length > 0;
+  for (const card of select('#featuredGrid').children) reveal?.observe(card);
+
+  function populateList(selector, emptySelector, items) {
+    const list = select(selector);
+    for (const { book, text } of items) {
+      const li = element('li');
+      li.append(bookLink(book), element('span', '', text));
+      list.append(li);
+    }
+    select(emptySelector).hidden = items.length > 0;
+  }
+  const dateFormat = new Intl.DateTimeFormat('bn-BD', { dateStyle: 'medium', timeZone: 'Asia/Dhaka' });
+  const dated = books.filter(book => book.pdf && /^\d{4}-\d{2}-\d{2}$/.test(book.publicationDate) &&
+    Number.isFinite(Date.parse(book.publicationDate)) && Date.parse(book.publicationDate) <= Date.now());
+  dated.sort((a, b) => b.publicationDate.localeCompare(a.publicationDate));
+  Promise.all(dated.map(async book => await pdfAvailable(book) ? book : null)).then(results => {
+    populateList('#recentBooks', '#recentEmpty', results.filter(Boolean).slice(0, 5).map(book => ({
+      book, text: dateFormat.format(new Date(book.publicationDate)),
+    })));
+  });
+  analytics.stats.then(snapshot => {
+    if (!snapshot) return;
+    const ranked = books.map(book => ({ book, sessions: snapshot.books.get(book.id)?.reading_sessions }))
+      .filter(row => row.sessions > 0).sort((a, b) => b.sessions - a.sessions);
+    populateList('#popularBooks', '#popularEmpty', ranked.slice(0, 5).map(({ book, sessions }) => ({
+      book, text: `${sessions.toLocaleString('bn-BD')}টি পড়ার সেশন`,
+    })));
+  });
 
   const toast = select('#toast');
   let toastTimer;
@@ -251,10 +288,12 @@
     container.addEventListener('pointerleave', reset);
   }
   pointerEffect(select('.hero-art'), select('.art-scene'), 'drift', 18, 'px');
-  grid.addEventListener('pointerover', (event) => {
-    const card = event.target.closest('.book-card');
-    if (!card || card.dataset.tiltReady) return;
-    pointerEffect(card, card, 'tilt', 7, 'deg');
-    card.dataset.tiltReady = 'true';
-  });
+  for (const container of [grid, select('#featuredGrid'), categoryGrid]) {
+    container.addEventListener('pointerover', event => {
+      const card = event.target.closest('.book-card, .segment-card');
+      if (!card || card.dataset.tiltReady || !desktopPointer.matches || motion.matches) return;
+      pointerEffect(card, card, 'tilt', 7, 'deg');
+      card.dataset.tiltReady = 'true';
+    });
+  }
 })();
