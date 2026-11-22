@@ -119,7 +119,7 @@ button { cursor: pointer; }
 .book-card { min-width: 0; border-radius: .95rem; background: white; border: 1px solid var(--line); box-shadow: 0 8px 24px #6711390c; display: flex; flex-direction: column; overflow: hidden; transform: perspective(850px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translateY(var(--lift, 0)); transition: transform .22s, box-shadow .22s; }
 .book-card:is(:hover, :focus-within) { --lift: -4px; box-shadow: var(--shadow); }
 .book-cover { display: grid; place-items: center; padding: 1.2rem 1rem; overflow: hidden; background: linear-gradient(145deg, #f5d6e6, #fcf5f9); }
-.book-cover img { display: block; width: min(66%, 10.8rem); height: auto; aspect-ratio: 500 / 708; border-radius: .23rem; box-shadow: 6px 10px 22px #32202d40; transition: transform .28s; }
+.book-cover img { display: block; width: min(66%, 10.8rem); height: auto; aspect-ratio: auto 500 / 708; border-radius: .23rem; box-shadow: 6px 10px 22px #32202d40; transition: transform .28s; }
 .book-card:hover img { transform: scale(1.045); }
 .book-body { display: flex; flex: 1; flex-direction: column; align-items: flex-start; gap: .65rem; padding: 1.15rem; }
 .book-meta { color: var(--burgundy); font-size: .92rem; font-weight: 700; }

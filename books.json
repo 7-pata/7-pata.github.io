@@ -84,7 +84,7 @@
     "title": "AI-এর যুগে সত্য-মিথ্যা",
     "category": "AI, প্রযুক্তি ও প্রোগ্রামিং",
     "summary": "ডিপফেক, ভুয়া খবর এবং ডিজিটাল তথ্য যাচাইয়ের পথনির্দেশ।",
-    "pdf": "books/06-ai-truth-premium.pdf",
+    "pdf": "books/7Pata_AI_Truth_Final_Premium_Uncropped.pdf",
     "pages": 15,
     "color": "#d41465",
     "symbol": "◎",
@@ -92,7 +92,7 @@
     "published": true,
     "categoryId": "technology",
     "featured": true,
-    "cover": "assets/covers/ai-final.webp",
+    "cover": "assets/covers/ai-uncropped.webp",
     "edition": "final-professional"
   },
   {
