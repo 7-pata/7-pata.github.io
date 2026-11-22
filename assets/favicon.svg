@@ -1,1 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#d41465"/><text x="7" y="43" font-family="Arial" font-size="37" font-weight="900" fill="#fff">7</text><text x="29" y="42" font-family="Arial" font-size="10" letter-spacing=".04em" font-weight="900" fill="#fff">PATA</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="৭ পাতা">
+  <rect width="64" height="64" rx="14" fill="#d41465"/>
+  <path d="M15 49h34" stroke="#ffd7e8" stroke-width="3" stroke-linecap="round"/>
+  <path fill="#fff" transform="translate(12 42) scale(.065 -.049)" d="M562 121 547 0Q480 2 441 15Q402 28 385.5 60.5Q369 93 369 153V240Q345 234 320.5 231Q296 228 270 228Q160 228 108.5 274Q57 320 57 399Q57 464 92.5 514Q128 564 186.5 593Q245 622 315 622Q356 622 390.5 612.5Q425 603 450 583Q474 564 487.5 534.5Q501 505 501 445V182Q501 148 512 135Q523 122 562 121ZM282 340Q331 340 369 355V420Q369 454 366 470Q363 486 353 496Q338 512 307 512Q277 512 251 497Q225 482 208.5 457.5Q192 433 192 404Q192 367 216.5 353.5Q241 340 282 340Z"/>
+</svg>

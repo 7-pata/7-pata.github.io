@@ -170,7 +170,7 @@
     return false;
   }
 
-  for (const [method, name] of [['rocket', 'রকেট'], ['bkash', 'বিকাশ'], ['nagad', 'নগদ']]) {
+  for (const [method, name] of [['bkash', 'বিকাশ'], ['nagad', 'নগদ'], ['rocket', 'রকেট']]) {
     const display = select(`#number-${method}`);
     const button = select(`[data-method="${method}"]`);
     const number = String(config.payments?.[method] ?? display.textContent).trim();

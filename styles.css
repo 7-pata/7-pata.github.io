@@ -145,8 +145,7 @@ button { cursor: pointer; }
 .support h2 span { color: var(--pink); }
 .pay-card { display: flex; flex-direction: column; align-items: flex-start; gap: .55rem; background: white; border: 1px solid var(--line); border-radius: .85rem; padding: 1.25rem; }
 .pay-card h3 { color: var(--burgundy); }
-.pay-card.rocket { border-color: #ad77b4; box-shadow: var(--shadow); }
-.rocket .pay-status:not(.unavailable) { color: #5d2566; font: 700 clamp(1.25rem, 2.8vw, 1.85rem)/1.4 system-ui, sans-serif; letter-spacing: .035em; font-variant-numeric: tabular-nums; user-select: all; }
+.pay-status[dir="ltr"]:not(.unavailable) { color: var(--burgundy); font: 700 clamp(1.25rem, 2.8vw, 1.85rem)/1.4 system-ui, sans-serif; letter-spacing: .035em; font-variant-numeric: tabular-nums; user-select: all; }
 .pay-status { color: var(--muted); }
 .pay-card .button { margin-top: .25rem; }
 .support-note { margin-top: 1.2rem; color: var(--muted); }
