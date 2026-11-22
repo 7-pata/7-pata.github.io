@@ -1,1 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630"><defs><linearGradient id="a" x2="1" y2="1"><stop stop-color="#ad0d4d"/><stop offset="1" stop-color="#ed287b"/></linearGradient></defs><rect width="1200" height="630" fill="url(#a)"/><circle cx="1010" cy="100" r="430" fill="none" stroke="#ffffff33" stroke-width="2"/><circle cx="1010" cy="100" r="330" fill="none" stroke="#ffffff33" stroke-width="2"/><text x="80" y="360" fill="white" font-size="240" font-family="Arial" font-weight="900" letter-spacing=".04em">7 Pata.</text><text x="90" y="458" fill="#ffe3ef" font-size="37" font-family="Arial">SEVEN DIMENSIONS OF KNOWLEDGE</text><text x="90" y="515" fill="#ffe3ef" font-size="24" font-family="Arial">FREE BANGLA E-BOOK LIBRARY</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title">
+  <title id="title">৭ পাতা — বাংলা ডিজিটাল গ্রন্থাগার</title>
+  <defs><linearGradient id="pink" x2="1" y2="1"><stop stop-color="#671139"/><stop offset="1" stop-color="#a01455"/></linearGradient></defs>
+  <rect width="1200" height="630" fill="url(#pink)"/>
+  <circle cx="965" cy="315" r="218" fill="none" stroke="#f4a7cb" stroke-opacity=".48"/>
+  <circle cx="965" cy="315" r="190" fill="none" stroke="#f4a7cb" stroke-opacity=".26"/>
+  <g fill="#f4a7cb">
+    <circle cx="1183.0" cy="315.0" r="4"/>
+    <circle cx="1100.9" cy="485.4" r="4"/>
+    <circle cx="916.5" cy="527.5" r="4"/>
+    <circle cx="768.6" cy="409.6" r="4"/>
+    <circle cx="768.6" cy="220.4" r="4"/>
+    <circle cx="916.5" cy="102.5" r="4"/>
+    <circle cx="1100.9" cy="144.6" r="4"/>
+  </g>
+  <g transform="rotate(14 965 315)"><rect x="888" y="184" width="168" height="265" rx="12" fill="#eaa2bf"/></g>
+  <g transform="rotate(-12 965 315)">
+    <rect x="868" y="184" width="168" height="265" rx="12" fill="#fff0f6"/>
+    <path d="M894 191v251M915 274h78m-78 23h78m-78 23h58" stroke="#ba427a" stroke-width="3"/>
+  </g>
+  <g font-family="Noto Sans Bengali, Hind Siliguri, sans-serif" fill="#fff9fc">
+    <text x="78" y="239" font-size="118" font-weight="700">৭ পাতা</text>
+    <text x="82" y="338" font-size="46" font-weight="700">সাতটি জ্ঞানদিগন্ত,</text>
+    <text x="82" y="404" font-size="46" font-weight="700">সবার জন্য উন্মুক্ত।</text>
+    <text x="83" y="490" font-size="30" fill="#ffcee5">বাংলা ডিজিটাল গ্রন্থাগার</text>
+  </g>
+</svg>
