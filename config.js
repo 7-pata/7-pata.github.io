@@ -2,8 +2,8 @@
 window.SEVENUP = {
   author: 'অর্নব',
   facebook: '', // https://www.facebook.com/your-page
-  payments: { bkash: '', nagad: '', rocket: '01860066158' },
-  siteUrl: 'https://7-pata.github.io/',
+  payments: { bkash: '01860066158', nagad: '01860066158', rocket: '01860066158' },
+  siteUrl: 'https://7pata.github.io/',
   analytics: { measurementId: '', statsUrl: '' },
   categories: [
     { id: 'literature', title: 'গল্প, সাহিত্য ও কল্পজগৎ', icon: 'book', accent: 'violet', summary: 'গল্প, কবিতা আর কল্পনায় নতুন জগৎ', subcategories: ['উপন্যাস ও ছোটগল্প', 'রহস্য ও থ্রিলার', 'কবিতা', 'কল্পবিজ্ঞান', 'রোমান্টিক সাহিত্য', 'গোয়েন্দা গল্প', 'শিশু-কিশোর সাহিত্য'] },

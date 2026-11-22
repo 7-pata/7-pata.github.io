@@ -1,6 +1,10 @@
 # GitHub Pages migration
 
-## Verified preflight
+## Migration completed
+
+The organization and repository now use `7pata/7pata.github.io`. The current Pages address is `https://7pata.github.io/`.
+
+## Historical preflight
 
 - The live organization site is `https://7-pata.github.io/`. Pages reports a branch deployment from `main` at the repository root, HTTPS enforcement on, and no custom domain.
 - Public lookups for the proposed `7pata` namespace and Pages URL returned 404. GitHub does not expose reserved or unavailable names reliably through public lookups. Confirm availability in the organization settings before proceeding.
