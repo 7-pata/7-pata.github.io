@@ -9,7 +9,9 @@
     "color": "#7452b2",
     "symbol": "✦",
     "author": "অর্নব",
-    "published": true
+    "published": true,
+    "categoryId": "literature",
+    "featured": true
   },
   {
     "id": "arts",
@@ -21,7 +23,9 @@
     "color": "#cf6374",
     "symbol": "♫",
     "author": "অর্নব",
-    "published": true
+    "published": true,
+    "categoryId": "arts",
+    "featured": true
   },
   {
     "id": "history",
@@ -33,7 +37,9 @@
     "color": "#b98550",
     "symbol": "⌛",
     "author": "অর্নব",
-    "published": true
+    "published": true,
+    "categoryId": "history",
+    "featured": true
   },
   {
     "id": "psychology",
@@ -45,7 +51,9 @@
     "color": "#3b98a0",
     "symbol": "◈",
     "author": "অর্নব",
-    "published": true
+    "published": true,
+    "categoryId": "mind",
+    "featured": true
   },
   {
     "id": "career",
@@ -57,7 +65,9 @@
     "color": "#438567",
     "symbol": "৳",
     "author": "অর্নব",
-    "published": true
+    "published": true,
+    "categoryId": "life",
+    "featured": true
   },
   {
     "id": "ai",
@@ -69,7 +79,9 @@
     "color": "#d41465",
     "symbol": "◎",
     "author": "অর্নব",
-    "published": true
+    "published": true,
+    "categoryId": "technology",
+    "featured": true
   },
   {
     "id": "science",
@@ -81,6 +93,8 @@
     "color": "#408ac3",
     "symbol": "✧",
     "author": "অর্নব",
-    "published": true
+    "published": true,
+    "categoryId": "science",
+    "featured": true
   }
 ]

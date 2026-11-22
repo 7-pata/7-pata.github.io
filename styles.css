@@ -294,3 +294,23 @@ button { cursor: pointer; }
 @media (prefers-reduced-motion: reduce) {
   .segment-card:hover, .book-card:hover { transform: none !important; }
 }
+
+/* Color covers for the published catalog use the book's existing metadata. */
+.catalog-cover {
+  display: flex;
+  width: min(100%, 11rem);
+  min-height: 14rem;
+  margin-inline: auto;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: .4rem;
+  padding: .8rem;
+  border-radius: .3rem;
+  background: linear-gradient(150deg, var(--cover-color, #671139), #251b38 75%);
+  color: white;
+  line-height: 1.35;
+  box-shadow: 6px 10px 22px #32202d40;
+}
+.catalog-cover .cover-symbol { font-size: 1.85rem; line-height: 1; }
+.catalog-cover strong { font-size: 1rem; }
+.book-cover { text-decoration: none; }

@@ -15,23 +15,23 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=v2">
+  <link rel="stylesheet" href="styles.css?v=catalog">
   <script defer src="config.js?v=v2-support"></script>
-  <script defer src="library.js?v=v2"></script>
-  <script defer src="analytics.js?v=v2"></script>
-  <script defer src="book.js?v=v2"></script>
+  <script defer src="library.js?v=catalog"></script>
+  <script defer src="analytics.js?v=catalog"></script>
+  <script defer src="book.js?v=catalog"></script>
 </head>
 <body>
   <a class="skip" href="#main">মূল অংশে যান</a>
   <header class="header">
     <div class="wrap topbar">
       <a class="logo" href="./" aria-label="৭ পাতা — প্রথম পাতা"><span aria-hidden="true">৭</span> পাতা</a>
-      <a class="text-link" href="./#books">বইয়ের সংগ্রহে ফিরুন</a>
+      <a class="text-link" href="library.html">বইয়ের সংগ্রহে ফিরুন</a>
     </div>
   </header>
   <main id="main" class="wrap book-page" tabindex="-1">
     <article class="book-detail" id="bookDetail" hidden>
-      <div class="detail-cover"><img id="detailCover" width="500" height="708" alt=""></div>
+      <div id="detailCover" class="detail-cover"></div>
       <div>
         <p id="detailCategory" class="eyebrow"></p>
         <h1 id="detailTitle"></h1>
@@ -47,7 +47,8 @@
         <input id="shareUrl" aria-label="বইয়ের লিংক" readonly hidden>
       </div>
     </article>
-    <section id="bookNotFound" class="empty" hidden><h1>বইটি পাওয়া যায়নি</h1><a class="text-link" href="./#books">বইয়ের সংগ্রহ দেখুন</a></section>
+    <p id="catalogError" role="status" hidden>বইয়ের তালিকা লোড হয়নি। পৃষ্ঠাটি আবার খুলে দেখুন।</p>
+    <section id="bookNotFound" class="empty" hidden><h1>বইটি পাওয়া যায়নি</h1><a class="text-link" href="library.html">বইয়ের সংগ্রহ দেখুন</a></section>
     <section id="reader" class="reader" aria-labelledby="readerTitle" hidden>
       <div class="reader-heading">
         <div><h2 id="readerTitle" tabindex="-1">অনলাইনে পড়ুন</h2><p id="readerStatus" role="status"></p></div>
@@ -65,7 +66,7 @@
       <div id="readerViewport" class="reader-viewport" tabindex="0" role="region" aria-label="পিডিএফ পাতা" hidden>
         <div id="pdfPage" class="pdf-page"><canvas id="pdfCanvas" aria-hidden="true"></canvas><div id="pdfText" class="pdf-text"></div></div>
       </div>
-      <p class="reader-fallback" id="readerFallback" hidden><a class="text-link" id="openPdf" target="_blank" rel="noopener noreferrer">মূল পিডিএফ খুলুন</a></p>
+      <p class="reader-fallback" id="readerFallback" hidden>মোবাইলে পড়তে অসুবিধা হলে <a class="text-link" id="openPdf" target="_blank" rel="noopener noreferrer">নতুন ট্যাবে মূল PDF খুলুন</a> অথবা উপরের PDF ডাউনলোড লিংক ব্যবহার করুন।</p>
     </section>
     <noscript><p>বইয়ের বিবরণ ও পাঠক খুলতে জাভাস্ক্রিপ্ট চালু করুন।</p></noscript>
   </main>

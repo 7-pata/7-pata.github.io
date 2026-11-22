@@ -18,3 +18,7 @@
 - এটি ফ্রি static site; বাস্তব pageview, completed reads বা downloads-এর shared analytics নিজের থেকে সংগ্রহ করে না।
 - `books.json`-এ বইয়ের নতুন তথ্য যোগ করা যাবে; বইয়ের id ও PDF path একই রাখলে লিংক স্থিতিশীল থাকে।
 - আগের হোমপেজের support section, payment configuration এবং অন্য কাস্টম কাজের কোনো ফাইল এই প্যাকেজ বদলায় না।
+
+## সাইটে বই প্রকাশ
+
+হোমপেজ, লাইব্রেরি ও বইয়ের বিবরণ একই `books.json` ব্যবহার করে। নতুন বইয়ের জন্য একটি স্বতন্ত্র `id`, সঠিক `categoryId`, প্রকাশিত হলে `published: true`, এবং আসল PDF-এর আপেক্ষিক পথ দিন। পুরোনো আসন্ন বইয়ের তথ্য `config.js`-এ রাখা আছে।

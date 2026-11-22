@@ -21,11 +21,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=v2">
+  <link rel="stylesheet" href="styles.css?v=catalog">
   <script defer src="config.js?v=v2-support"></script>
-  <script defer src="library.js?v=v2"></script>
-  <script defer src="analytics.js?v=v2"></script>
-  <script defer src="script.js?v=v2"></script>
+  <script defer src="library.js?v=catalog"></script>
+  <script defer src="analytics.js?v=catalog"></script>
+  <script defer src="script.js?v=catalog"></script>
 </head>
 <body id="home">
   <a class="skip" href="#main">মূল অংশে যান</a>
@@ -35,7 +35,7 @@
       <button type="button" class="menu" aria-expanded="false" aria-controls="nav" hidden>মেনু</button>
       <nav id="nav" aria-label="প্রধান মেনু"><div class="nav-links">
         <a href="#segments">বিষয়সমূহ</a>
-        <a href="#books">বইয়ের সংগ্রহ</a>
+        <a href="library.html">বইয়ের সংগ্রহ</a>
         <a href="#statistics">পরিসংখ্যান</a>
         <a href="#principles">যেভাবে পড়বেন</a>
         <a href="#about">পরিচিতি</a>
@@ -51,7 +51,7 @@
           <h1>সাতটি জ্ঞানদিগন্ত,<br><em>সবার জন্য উন্মুক্ত।</em></h1>
           <p class="intro">প্রোগ্রামিং থেকে ইতিহাস, নতুন বিষয় জানুন নিজের ভাষায়। বিষয় ধরে বই খুঁজুন আর প্রকাশিত বইয়ের পিডিএফ বিনামূল্যে নামিয়ে পড়ুন।</p>
           <div class="hero-actions">
-            <a class="button primary" href="#books">বইয়ের সংগ্রহ দেখুন</a>
+            <a class="button primary" href="library.html">সব ই-বুক দেখুন</a>
             <a class="button secondary" href="#segments">বিষয় বেছে নিন</a>
           </div>
         </div>
@@ -100,6 +100,7 @@
           <label><span>উপবিষয়</span><select id="subcategoryFilter" disabled><option value="">সব উপবিষয়</option></select></label>
           <p id="count" role="status"></p>
         </div>
+        <p id="catalogError" role="status" hidden>প্রকাশিত বইয়ের তালিকা লোড হয়নি। পৃষ্ঠাটি আবার খুলে দেখুন।</p>
         <div class="books-grid" id="bookGrid"></div>
         <div class="empty" id="noBooks" hidden>
           <h3>কোনো বই পাওয়া যায়নি</h3>

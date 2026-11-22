@@ -1,12 +1,13 @@
-(() => {
+(async () => {
   'use strict';
-  const { config, books, detail, format, pdfAvailable, bookActions } = window.PataLibrary;
+  await window.PataLibrary.ready;
+  const { config, books, detail, format, pdfAvailable, bookActions, coverArt, catalogUnavailable } = window.PataLibrary;
   const analytics = window.PataAnalytics;
   const get = id => document.getElementById(id);
   const params = new URLSearchParams(location.search);
   const book = books.find(item => item.id === params.get('id'));
   if (!book) {
-    get('bookNotFound').hidden = false;
+    get(catalogUnavailable() ? 'catalogError' : 'bookNotFound').hidden = false;
     document.title = 'বইটি পাওয়া যায়নি — ৭ পাতা';
     const robots = document.createElement('meta');
     robots.name = 'robots';
@@ -24,16 +25,14 @@
   document.querySelector('meta[name="description"]').content = book.summary;
   document.querySelector('meta[property="og:title"]').content = document.title;
   document.querySelector('meta[property="og:description"]').content = book.summary;
-  const image = get('detailCover');
-  image.src = book.cover || 'assets/default-cover.svg';
-  image.alt = `${book.title} বইয়ের প্রচ্ছদ`;
-  image.addEventListener('error', () => { image.src = 'assets/default-cover.svg'; }, { once: true });
+  get('detailCover').append(coverArt(book));
 
   get('detailCategory').textContent = [book.category, book.subcategory].filter(Boolean).join(' · ');
   get('detailTitle').textContent = book.title;
   get('detailSummary').textContent = book.summary;
   const date = new Date(book.publicationDate);
   const metaParts = [book.author || config.author];
+  if (Number.isInteger(book.pages) && book.pages > 0) metaParts.push(`${format(book.pages)} পৃষ্ঠা`);
   if (Number.isInteger(book.readingMinutes) && book.readingMinutes > 0) metaParts.push(`আনুমানিক ${format(book.readingMinutes)} মিনিট`);
   get('detailMeta').textContent = metaParts.filter(Boolean).join(' · ');
   get('bookDetail').hidden = false;

@@ -1,7 +1,8 @@
-(() => {
+(async () => {
   'use strict';
+  await window.PataLibrary.ready;
 
-  const { config, categories, books, normalize, node: element, detail, pdfAvailable, bookActions } = window.PataLibrary;
+  const { config, categories, books, normalize, node: element, detail, pdfAvailable, bookActions, coverArt, catalogUnavailable } = window.PataLibrary;
   const analytics = window.PataAnalytics;
   const select = selector => document.querySelector(selector);
   const grid = select('#bookGrid');
@@ -55,15 +56,8 @@
     card.style.setProperty('--book-delay', `${Math.min(index, 5) * 45}ms`);
     const cover = element('a', 'book-cover');
     cover.href = detail(book.id);
-    const image = element('img');
-    image.src = book.cover || 'assets/default-cover.svg';
-    image.alt = `${book.title} বইয়ের প্রচ্ছদ`;
-    image.width = 500;
-    image.height = 708;
-    image.loading = 'lazy';
-    image.decoding = 'async';
-    image.addEventListener('error', () => { image.src = 'assets/default-cover.svg'; }, { once: true });
-    cover.append(image);
+    cover.setAttribute('aria-label', `${book.title} বইয়ের প্রচ্ছদ`);
+    cover.append(coverArt(book));
     const body = element('div', 'book-body');
     const title = element('h3');
     title.append(bookLink(book));
@@ -72,12 +66,7 @@
     metrics.hidden = true;
     analytics.bookMetrics(metrics, book.id);
     const actions = element('div', 'book-actions');
-    if (book.pdf) {
-      actions.append(element('span', 'book-status', 'পিডিএফ যাচাই হচ্ছে'));
-      pdfAvailable(book).then(available => bookActions(actions, book, available));
-    } else {
-      bookActions(actions, book, false);
-    }
+    bookActions(actions, book, undefined, true);
     body.append(element('span', 'book-meta', meta), title, element('p', '', book.summary), metrics, actions);
     card.append(cover, body);
     return card;
@@ -137,6 +126,7 @@
     search.focus();
   });
   drawBooks();
+  select('#catalogError').hidden = !catalogUnavailable();
 
   const featured = books.filter(book => book.featured);
   select('#featuredGrid').append(...featured.map(bookCard));

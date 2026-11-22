@@ -1,5 +1,6 @@
-(() => {
+(async () => {
   'use strict';
+  await window.PataLibrary.ready;
   const { config, books, format, node } = window.PataLibrary;
   const measurementId = config.analytics?.measurementId;
   const validId = typeof measurementId === 'string' && /^G-[A-Z0-9]{4,20}$/.test(measurementId);
